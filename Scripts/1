@@ -1,0 +1,44 @@
+#Realice un script que simule el comportamiento de una estructura de PILA e implemente
+#las siguientes funciones aplicables sobre una estructura global definida en el script:
+
+#!/bin/bash
+
+pila=()
+
+pop()
+	retorno=${pila[-1]}
+	unset 'pila[${#pila[@]}-1]'
+	echo " $retorno popeado"
+}
+
+push(){
+	pila+=$1
+	echo" $1 pusheado"
+}
+lenght(){
+	tamano= ${#pila[@]}
+}
+
+	select opcion in "pop" "push" "lenght" "print" "salir"; do
+	       case $opcion in
+		       "pop")	
+			       pop
+			       ;;
+		       "push")
+			       echo"Ingrese un valor para push"
+			       read valor
+			       push "$valor"
+			       ;;
+		       "lenght")
+			       lenght
+			       echo "La longitud del arreglo es de "$tamano""
+			       ;;
+		       "print")
+			       echo "La pila quedo de la forma : (${pila[@]})"
+			       ;;
+		       "salir")
+			       exit 0
+			       ;;
+		esac
+	done
+exit 0	
